@@ -1,0 +1,53 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon"
+                 show-search="false"
+                 show-new-button="true"
+                 add-new-button-function="vm.new()">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
+                    <tr>
+                        <th name="Category"></th>
+                        <th name="Email"></th>
+                        <th name="Location"></th>
+                        <th name="Phone"></th>
+                        <th name="Special Name"></th>
+                        <th name="Start Date"></th>
+                        <th name="End Date"></th>
+                        <th name="Start Time"></th>
+                        <th name="End Time"></th>
+                        <th name="Actions"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="advert in vm.adverts" class="hover">
+                        <td>{{advert.Category}}</td>
+                        <td>{{advert.Email}}</td>
+                        <td>{{advert.Location}}</td>
+                        <td>{{advert.Phone}}</td>
+                        <td>{{advert.SpecialName}}</td>
+                        <td>{{advert.StartDate}}</td>
+                        <td>{{advert.EndDate}}</td>
+                        <td>{{advert.StartTime}}</td>
+                        <td>{{advert.EndTime}}</td>
+                        <td>
+                            <md-button class="md-icon-button" ng-click="vm.edit(advert)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">edit</md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="vm.delete(advert, $index)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
+                            </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-container>
+            <md-data-table-pagination class="margin-bottom-16" md-limit="vm.pagenation.limit" md-page="vm.pagenation.page" md-total="{{vm.adverts.length}}"></md-data-table-pagination>
+        </md-data-table-container>
+    </md-content>
+</md-content>

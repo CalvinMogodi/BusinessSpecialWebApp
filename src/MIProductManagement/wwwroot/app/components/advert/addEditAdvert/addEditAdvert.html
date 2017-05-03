@@ -1,0 +1,91 @@
+﻿<md-dialog ng-cloak class="large">
+    <md-toolbar class="color-blue md-title-header-bar" style="width:100%!important">
+        <div class="md-toolbar-tools">
+            <h2 ng-if="isEdit == false">New</h2>
+            <h2 ng-if="isEdit == true">Edit</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeModal()">
+                <md-icon md-font-icon="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="advertForm">
+            <div layout-gt-md="row" layout-md="column">
+                <div flex>
+                    <md-input-container class="md-block">
+                        <label>Select Category</label>
+                        <md-select ng-model="advert.Category" required name="category">
+                            <md-option value="{{category}}" ng-repeat="category in categories">{{category}}</md-option>
+                        </md-select>
+                        <div ng-messages="advertForm.category.$error" ng-if="advertForm.category.$dirty || formSubmitted">
+                            <div ng-message="required">Please select category</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input ng-model="advert.Email" required name="email" type="email" />
+                        <div ng-messages="advertForm.email.$error" ng-if="advertForm.email.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Location</label>
+                        <input ng-model="advert.Location" required name="location" type="text" />
+                        <div ng-messages="advertForm.location.$error" ng-if="advertForm.location.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Phone</label>
+                        <input ng-model="advert.Phone" required name="phone" type="text" />
+                        <div ng-messages="advertForm.phone.$error" ng-if="advertForm.phone.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Special Name</label>
+                        <input ng-model="advert.SpecialName" required name="specialName" type="text" />
+                        <div ng-messages="advertForm.specialName.$error" ng-if="advertForm.specialName.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div flex="5" hide-md></div><!-- gutter -->
+                <div flex>
+                    <md-input-container class="md-block">
+                        <label>Start Time</label>
+                        <input ng-model="advert.StartTime" required name="startTime" type="time" />
+                        <div ng-messages="advertForm.startTime.$error" ng-if="advertForm.startTime.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>End Time</label>
+                        <input ng-model="advert.EndTime" required name="endTime" type="time" />
+                        <div ng-messages="advertForm.endTime.$error" ng-if="advertForm.endTime.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
+                    </md-input-container>
+                    <div flex flex-gt-md="33" layout="row" class="md-block">
+                        <md-datepicker flex="auto" class="md-datepicker-custom md-hide-overflow" ng-model="advert.StartDate" md-placeholder="Select Start Date" required></md-datepicker>
+                    </div>
+                    <div flex flex-gt-md="33" layout="row" class="md-block">
+                        <md-datepicker flex="auto" class="md-datepicker-custom md-hide-overflow" ng-model="advert.EndDate" md-placeholder="Select End Date" required></md-datepicker>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <md-content class="md-padding">
+            <div layout="row">
+                <div flex="50" layout="column" layout-align="start start">
+                    <md-button class="md-primary md-primary-custom" ng-click="closeModal()">Cancel</md-button>
+                </div>
+                <div flex="50" layout="row" layout-align="end end">
+                    <md-button class="md-primary md-primary-custom" ng-if="isEdit == false" ng-click="create(advert)">Add</md-button>
+                    <md-button class="md-primary md-primary-custom" ng-if="isEdit == true" ng-click="Update(advert)">Update</md-button>
+                </div>
+            </div>
+        </md-content>
+    </md-content>
+</md-dialog>

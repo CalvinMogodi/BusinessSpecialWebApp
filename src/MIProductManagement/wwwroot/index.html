@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html ng-app="MIPM">
+<head>
+    <meta charset="utf-8" />
+    <title>Vert</title>
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link href="assets/css/ui-grid.css" rel="stylesheet" />
+</head>
+<body ng-controller="indexController" ng-class="{'md-login' : currentUrl === '/login'}">
+    <div class="md-home-toolbar md-padding" layout="row" ng-hide="currentUrl === '/login'">
+        <div flex layout="row" layout-align="start center">
+            <img src="assets/img/error.png" height="55" />
+            <h1 style="color:white">Vert</h1>
+        </div>
+        <!--<div flex layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon>notifications</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="More" ng-click="navigateTo('/login')">
+                <md-icon>reply</md-icon>
+            </md-button>
+        </div>-->
+    </div>
+    <div layout="row" ng-class="{'layout-fill' : currentUrl === '/login', 'main-wrap' : currentUrl !== '/login',}">
+
+        <md-sidenav md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" class="md-whiteframe-z2 md-sidenav-left gt-md-closed md-locked-open" ng-hide="currentUrl === '/login'">
+            <div flex layout="column">
+                <div class="md-padding profile-area margin-top-16" layout="column" layout-align="center center">
+                    <div flex layout="row">
+                        <img class="profile-picture" src={{profileImage}} />
+                        <div class="online"></div>
+                    </div>
+                    <div flex layout="column" layout-align="center center">
+                        <p class="md-name">{{displayName}}</p>
+                        <p class="md-email">{{idNumber}}</p>
+                    </div>
+                </div>
+
+                <md-menu-sidenav>
+
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/dashboard')">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>desktop_windows</md-icon></span>Dashboard</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/users')" ng-if="userType == 1">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>group</md-icon></span>Users</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/faqs')" ng-if="userType == 1">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>receipt</md-icon></span>FAQs</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/reports')" ng-if="userType == 1">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>timelapse</md-icon></span>Report</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/analytics')" ng-if="userType == 1">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>content_paste</md-icon></span>Analytics</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/competitorReports')" ng-if="userType == '3'">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>business_center</md-icon></span>competitor Report</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                    <md-menu-sidenav-item ng-click="navigateTo('/myAdverts')"  ng-if="userType == '3'">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon>add_box</md-icon></span>My Adverts</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+
+                </md-menu-sidenav>
+
+            </div>
+        </md-sidenav>
+
+        <div layout="row" layout-fill>
+            <div layout="column" flex style="overflow: auto" ng-class="{'layout-fill' : currentUrl === '/login'}">
+                <div ng-view ng-class="{'layout-fill' : currentUrl === '/login'}"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!--Libraries-->
+<script src="assets/js/angular.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<script src="assets/js/ngstorage.min.js"></script>
+<script src="assets/js/md-data-table.js"></script>
+<script src="assets/js/ui-grid.js"></script>
+<script src="assets/js/pdfmake.js"></script>
+<script src="assets/js/vfs_fonts.js"></script>
+<script src="assets/js/angular-messages.js"></script>
+<script src="assets/js/angular-moment.min.js"></script>
+
+<!-- Angualr Material -->
+<script src="assets/js/angular-animate.js"></script>
+<script src="assets/js/angular-aria.js"></script>
+<script src="assets/js/angular-material.js"></script>
+<script src="assets/js/material-menu-sidenav.js"></script>
+<script src="assets/js/md-data-table.js"></script>
+
+<!--App Config-->
+<script src="app/app.js"></script>
+<script src="app/config.route.js"></script>
+
+<!--Firebase-->
+<script src="assets/js/angularfire.min.js"></script>
+<script src="assets/js/firebase.js"></script>
+
+<!--Directives-->
+<script src="app/common/pageheader/dirpageheader.js"></script>
+
+<!--Controllers-->
+<script src="indexcontroller.js"></script>
+<script src="app/common/login/login.controller.js"></script>
+<script src="app/components/advert/addEditAdvert/addEditAdvert.controller.js"></script>
+<script src="app/components/advert/advert.controller.js"></script>
+<script src="app/components/analytic/analytic.controller.js"></script>
+<script src="app/components/competitorReport/competitorReport.controller.js"></script>
+<script src="app/components/dashboard/dashboard.controller.js"></script>
+<script src="app/components/faq/addEditFAQ/addEditFAQ.controller.js"></script>
+<script src="app/components/faq/faq.controller.js"></script>
+<script src="app/components/report/report.controller.js"></script>
+<script src="app/components/user/user.controller.js"></script>
+<script src="app/components/dashboard/dashboard.controller.js"></script>
+
+<!--Services-->
+<script src="app/common/login/login.service.js"></script>
+<script src="app/components/gobal.service.js"></script>
+<!--helpers-->
+<script src="app/common/helper/modal.js"></script>
+

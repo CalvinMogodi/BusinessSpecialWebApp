@@ -1,0 +1,32 @@
+﻿<div>
+    <md-toolbar class="md-toolbar-custom-header">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button hide-menu-close" aria-label="Menu Toggle" ng-click="menu()">
+                <md-icon md-font-icon="material-icons">menu</md-icon>
+            </md-button>           
+            <div class="md-toolbar-tools md-toolbar-custom-heading">
+                <i class="material-icons">{{icon}}</i>
+                <h2>{{heading}}</h2>
+            </div>
+          
+            <span flex></span>
+            <md-menu md-position-mode="target-right target">
+                <md-button class="md-icon-button" aria-label="Options" ng-click="openToolsMenu($mdOpenMenu, ev)">
+                    <md-icon md-font-icon="material-icons">more_vert</md-icon>
+                </md-button>
+                <md-menu-content width="3" class="md-functions-dropdown-sm">
+                    <md-menu-item>
+                        <md-button class="md-primary" ng-click="logout()">
+                            <md-icon md-font-icon="material-icons">reply</md-icon>Sign Out
+                        </md-button>
+                    </md-menu-item>
+
+                </md-menu-content>
+            </md-menu>
+        </div>
+        <md-button ng-show="{{showNewButton}}" class="md-fab md-mini md-warn md-header-fab" aria-label="Add" ng-click="addNewButtonFunction()">
+            <md-icon md-font-icon="material-icons">add</md-icon>
+        </md-button>     
+
+    </md-toolbar>
+</div>

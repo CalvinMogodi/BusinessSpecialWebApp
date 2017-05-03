@@ -1,0 +1,42 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon">
+</dir-page-header>
+
+<div class="md-padding md-application-cards" layout="row" layout-wrap>
+    <md-card flex layout-align="center center" class="md-flip-in" ng-click="vm.navigateTo('/users')"  ng-if="vm.userType == 1">
+        <div layout="column" layout-align="center center">
+            <md-icon class="no-margin" style="color:#eab600">group</md-icon>
+            <p class="no-margin md-font-size-xs">Users</p>
+        </div>
+    </md-card>
+    <md-card flex layout-align="center center" class="md-flip-in" ng-click="vm.navigateTo('/faqs')"  ng-if="vm.userType == 1">
+        <div layout="column" layout-align="center center">
+            <md-icon class="no-margin" style="color:#7a0046">receipt</md-icon>
+            <p class="no-margin md-font-size-xs">FAQs</p>
+        </div>
+    </md-card>
+    <md-card flex layout-align="center center" class="md-flip-in" ng-click="vm.navigateTo('/reports')"  ng-if="vm.userType == 1">
+        <div layout="column" layout-align="center center">
+            <md-icon class="no-margin" style="color:#005a52">timelapse</md-icon>
+            <p class="no-margin md-font-size-xs">Report</p>
+        </div>
+    </md-card>
+    <md-card flex layout-align="center center" class="md-flip-in" ng-click="vm.navigateTo('/analytics')"  ng-if="vm.userType == 1">
+        <div layout="column" layout-align="center center">
+            <md-icon class="no-margin" style="color:#005a52">content_paste</md-icon>
+            <p class="no-margin md-font-size-xs">Analytics</p>
+        </div>
+    </md-card>
+    <md-card flex layout-align="center center" class="md-flip-in" ng-click="vm.navigateTo('/competitorReports')"  ng-if="vm.userType == 3">
+        <div layout="column" layout-align="center center">
+            <md-icon class="no-margin" style="color:#005a52">business_center</md-icon>
+            <p class="no-margin md-font-size-xs">competitor Report</p>
+        </div>
+    </md-card>
+    <md-card flex layout-align="center center" class="md-flip-in" ng-click="vm.navigateTo('/myAdverts')"  ng-if="vm.userType == 3">
+        <div layout="column" layout-align="center center">
+            <md-icon class="no-margin" style="color:#005a52">add_box</md-icon>
+            <p class="no-margin md-font-size-xs">My Adverts</p>
+        </div>
+    </md-card>
+</div>
